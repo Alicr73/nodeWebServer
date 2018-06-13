@@ -5,7 +5,7 @@ const hbs = require('hbs');
 const fs = require('fs');
 var app = express();
 
-// const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 hbs.registerPartials(__dirname+'/views/partials');
 app.set('view engine', 'hbs');
@@ -58,8 +58,12 @@ app.get('/about',(req,res)=>{
 //      res.send('About page');
 // });
 
+app.get('/projects',(req,res)=>{
+    res.render('projects.hbs',
+        {pageTitle:'projects'
+    });
+});
 
-
-app.listen(3000,()=>{
-    console.log("Hi server 3000");
+app.listen(port,()=>{
+    console.log(`server is going up on port ${port}`);
 });
